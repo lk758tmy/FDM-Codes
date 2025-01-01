@@ -1,0 +1,12 @@
+g=@square0101g; % omega=(0,1)X(0,1)
+[p,e,t]=poimesh(g);
+[p,e,t]=refinemesh(g,p,e,t);
+[p,e,t]=refinemesh(g,p,e,t);
+[p,e,t]=refinemesh(g,p,e,t); % start with a=0.25 (32 triangles)
+pdemesh(p,e,t);
+
+uexact=0.5*p(2,:).*(1-p(2,:));
+% c=1; a=0; f=1;
+
+u=pdeasmpoi_period(p,e,t);
+pdesurf(p,t,u);
